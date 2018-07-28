@@ -44,7 +44,7 @@ Response:
     },
     {
 	"cep": "11111111",
-	"rua": "Rua dos Frameworks",
+	"rua": "R dos Frameworks",
 	"numero": "S/N",
 	"bairro": "Centro",
 	"cidade": "Manaus",
@@ -78,12 +78,12 @@ URL:
 `localhost:8000/api/endereco/__id__`
 
 ##### Obs:
-Troque o __id__ pelo `_id` do endereço que deseja editar. Ex: `localhost:8000/api/endereco/507f1f77bcf86cd799439011`
+Substitua o `__id__` pelo `_id` do endereço que deseja editar. Ex: `localhost:8000/api/endereco/507f1f77bcf86cd799439011`
 
 Body (JSON):
 ```
 {
-	"cep": "..cep",
+	"cep": "..Cep",
 	"rua": "..Nome da Rua/Avenida",
 	"numero": "..N° da residência",
 	"bairro": "..Nome do bairro",
@@ -109,16 +109,20 @@ URL:
 `localhost:8000/api/endereco/__id__`
 
 ##### Obs:
-Troque o __id__ pelo id do endereço que deseja deletar. Ex: `localhost:8000/api/endereco/507f1f77bcf86cd799439011`
+Substitua o `__id__` pelo id do endereço que deseja deletar. Ex: `localhost:8000/api/endereco/507f1f77bcf86cd799439011`
 
 Response:
 ```
-Endereço deletado com sucesso.
+{
+	"success": "Endereço deletado com sucesso."
+}
 ou
-O endereço informado não foi encontrado.
+{
+	"message": "O endereço informado não foi encontrado."
+}
 ```
 
-## 2 Requisições para USUÁRIO:
+## 2 Requisições para Usuário:
 
 METHOD:
 `GET`
@@ -130,17 +134,31 @@ Response:
 ```
 [
     {
-	"nome": "Usuário 1",
-	"telefone": "Telefone 1",
-	"email": "Telefone 1",
+	"nome": "Fulano Desenvolvedor I",
+	"telefone": "999999999",
+	"email": "fulano_developI@xxx.com",
 	"endereco":
 	{
-		"cep": "cep 1",
-		"rua": "Rua 1",
-		"numero": "N° 1",
-		"bairro": "Bairro 1",
-		"cidade": "Cidade 1",
-		"estado": "Estado 1"
+		"cep": "00000000",
+		"rua": "R dos Progamadores",
+		"numero": "S/N",
+		"bairro": "Centro",
+		"cidade": "Manaus",
+		"estado": "AM"
+	}
+    },
+    {
+	"nome": "Fulano Desenvolvedor II",
+	"telefone": "988888888",
+	"email": "fulano_developII@xxx.com",
+	"endereco":
+	{
+		"cep": "11111111",
+		"rua": "R dos Frameworks",
+		"numero": "S/N",
+		"bairro": "Centro",
+		"cidade": "Manaus",
+		"estado": "AM"
 	}
     }
 ]
@@ -155,10 +173,17 @@ URL:
 Body (JSON):
 ```
 {
-	"nome": "Nome do Usuário",
-	"telefone": "Telefone do Usuário",
-	"email": "E-mail do Usuário",
-	"endereco": "CEP do Endereço"
+	"nome": "..Nome do Usuário",
+	"telefone": "..Telefone do Usuário",
+	"email": "..E-mail do Usuário",
+	"endereco": {
+		"cep": "..Cep",
+		"rua": "..Nome da Rua/Avenida",
+		"numero": "..N° da Residência",
+		"bairro": "..Nome do Bairro",
+		"cidade": "..Nome da Cidade",
+		"estado": "..UF"
+	}
 }
 ```
 
@@ -166,44 +191,62 @@ METHOD:
 `PUT`
 
 URL:
-`localhost:8000/api/usuario/<<identificador>>`
+`localhost:8000/api/usuario/__id__`
 
-Obs: Troque o `<<identificador>>` pelo id do usuário que deseja editar. Ex: `localhost:8000/api/usuario/1`
+##### Obs:
+Substitua o `__id__` pelo `_id` do usuário que deseja editar. Ex: `localhost:8000/api/usuario/507f1f77bcf86cd799439012`
 
 Body (JSON):
 ```
 {
-	"nome": "Nome do Usuário",
-	"telefone": "Telefone do Usuário",
-	"email": "E-mail do Usuário",
-	"endereco": "CEP do Endereço"
+	"nome": "..Nome do Usuário",
+	"telefone": "..Telefone do Usuário",
+	"email": "..E-mail do Usuário",
+	"endereco": {
+		"cep": "..Cep",
+		"rua": "..Nome da Rua/Avenida",
+		"numero": "..N° da Residência",
+		"bairro": "..Nome do Bairro",
+		"cidade": "..Nome da Cidade",
+		"estado": "..UF"
+	}
 }
 ```
 
 Validação dos Dados (Body). Para as requisiçes `POST` e `PUT`.
 ```
-nome	 => [Obrigatório, Máximo 150 caracteres].
-telefone => [Obrigatório, Somente números], ex: 92999999999.
-email 	 => [Obrigatório, E-mail, Máximo 150 caracteres].
-endereco => [Obrigatório, Somente números], ex: 69000000.
+nome	 	=> [Obrigatório, Máximo 150 caracteres].
+telefone 	=> [Obrigatório, Somente números], ex: 92999999999.
+email 	 	=> [Obrigatório, E-mail, Máximo 150 caracteres].
+endereco.cep 	=> [Obrigatório, Somente números], ex: 69000000.
+endereco.rua 	=> [Obrigatório, Máximo 150 caracteres].
+endereco.numero	=> [Obrigatório, Máximo 5 caracteres].
+endereco.bairro	=> [Obrigatório, Máximo 150 caracteres].
+endereco.cidade	=> [Obrigatório, Máximo 150 caracteres].
+endereco.estado	=> [Obrigatório, UF], ex: AM.
 ```
 
 METHOD:
 `DELETE`
 
 URL:
-`localhost:8000/api/usuario/<<identificador>>`
+`localhost:8000/api/usuario/__id__`
 
-Obs: Troque o `<<identificador>>` pelo id do usuário que deseja deletar. Ex: `localhost:8000/api/usuario/1`
+##### Obs:
+Substitua o `__id__` pelo `_id` do usuário que deseja deletar. Ex: `localhost:8000/api/usuario/507f1f77bcf86cd799439012`
 
 Response:
 ```
-Usuário deletado com sucesso.
+{
+	"success": "Usuário deletado com sucesso."
+}
 ou
-O usuário informado não foi encontrado.
+{
+	"message": "O usuário informado não foi encontrado."
+}
 ```
 
-## 3 Requisições para EMPRESA:
+## 3 Requisições para _Empresa:
 
 METHOD:
 `GET`
