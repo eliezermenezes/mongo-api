@@ -75,10 +75,10 @@ METHOD:
 `PUT`
 
 URL:
-`localhost:8000/api/endereco/<<_id>>`
+`localhost:8000/api/endereco/__id__`
 
 ##### Obs:
-Troque o `<<_id>>` pelo _id do endereço que deseja editar. Ex: `localhost:8000/api/endereco/1`
+Troque o `__id__` pelo `_id` do endereço que deseja editar. Ex: `localhost:8000/api/endereco/1`
 
 Body (JSON):
 ```
