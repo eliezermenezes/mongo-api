@@ -49,6 +49,14 @@ Response:
 	"bairro": "Centro",
 	"cidade": "Manaus",
 	"estado": "AM"
+    },
+    {
+	"cep": "22222222",
+	"rua": "R dos Patrões",
+	"numero": "1500",
+	"bairro": "Patrões",
+	"cidade": "Manaus",
+	"estado": "AM"
     }
 ]
 ```
@@ -246,7 +254,7 @@ ou
 }
 ```
 
-## 3 Requisições para _Empresa:
+## 3 Requisições para Empresa:
 
 METHOD:
 `GET`
@@ -258,17 +266,31 @@ Response:
 ```
 [
     {
-	"cnpj": "cnpj 1",
-	"nome": "empresa 1",
-	"telefone": "telefone 1",
+	"cnpj": "12345678912345",
+	"nome": "DESEN SOFT LDTA",
+	"telefone": "9333333333",
 	"endereco":
 	{
-		"cep": "cep 1",
-		"rua": "rua 1",
-		"numero": "n° 1",
-		"bairro": "bairro 1",
-		"cidade": "cidade 1",
-		"estado": "estado 1"
+		"cep": "22222222",
+		"rua": "R dos Patrões",
+		"numero": "1500",
+		"bairro": "Patrões",
+		"cidade": "Manaus",
+		"estado": "AM"
+	}
+    },
+    {
+	"cnpj": "9876543219865",
+	"nome": "AMAZON WEB DEV",
+	"telefone": "966666666",
+	"endereco":
+	{
+		"cep": "11111111",
+		"rua": "R dos Frameworks",
+		"numero": "S/N",
+		"bairro": "Centro",
+		"cidade": "Manaus",
+		"estado": "AM"
 	}
     }
 ]
@@ -283,10 +305,17 @@ URL:
 Body (JSON):
 ```
 {
-	"cnpj": "CNPJ da Empresa",
-	"nome": "Nome da Empresa",
-	"telefone": "Telefone da Empresa",
-	"endereco": "CEP do Endereço"
+	"cnpj": "..Cnpj",
+	"nome": "..Nome da Empresa",
+	"telefone": "..Telefone da Empresa",
+	"endereco": {
+		"cep": "..Cep",
+		"rua": "..Nome da Rua/Avenida",
+		"numero": "..N° da Residência",
+		"bairro": "..Nome do Bairro",
+		"cidade": "..Nome da Cidade",
+		"estado": "..UF"
+	}
 }
 ```
 
@@ -294,43 +323,60 @@ METHOD:
 `PUT`
 
 URL:
-`localhost:8000/api/empresa/<<identificador>>`
+`localhost:8000/api/empresa/__id__`
 
-Obs: Troque o `<<identificador>>` pelo id da empresa que deseja editar. Ex: `localhost:8000/api/empresa/1`
+##### Obs:
+Substitua o `__id__` pelo `_id` da empresa que deseja editar. Ex: `localhost:8000/api/empresa/507f1f77bcf86cd799439013`
 
 Body (JSON):
 ```
 {
-	"cnpj": "CNPJ da Empresa",
-	"nome": "Nome da Empresa",
-	"telefone": "Telefone da Empresa",
-	"endereco": "CEP do Endereço"
+	"cnpj": "..Cnpj",
+	"nome": "..Nome da Empresa",
+	"telefone": "..Telefone da Empresa",
+	"endereco": {
+		"cep": "..Cep",
+		"rua": "..Nome da Rua/Avenida",
+		"numero": "..N° da Residência",
+		"bairro": "..Nome do Bairro",
+		"cidade": "..Nome da Cidade",
+		"estado": "..UF"
+	}
 }
 ```
 
 Validação dos Dados (Body). Para as requisiçes `POST` e `PUT`.
 ```
-cnp	 => [Obrigatório, Somente números, 14 dígitos].
-nome 	 => [Obrigatório, Máximo 150 caracteres].
-telefone => [Obrigatório, Somente números], ex: 92999999999.
-endereco => [Obrigatório, Somente números], ex: 69000000.
+cnp	 	=> [Obrigatório, Somente números, 14 dígitos].
+nome 	 	=> [Obrigatório, Máximo 150 caracteres].
+telefone 	=> [Obrigatório, Somente números], ex: 92999999999.
+endereco.cep 	=> [Obrigatório, Somente números], ex: 69000000.
+endereco.rua 	=> [Obrigatório, Máximo 150 caracteres].
+endereco.numero	=> [Obrigatório, Máximo 5 caracteres].
+endereco.bairro	=> [Obrigatório, Máximo 150 caracteres].
+endereco.cidade	=> [Obrigatório, Máximo 150 caracteres].
+endereco.estado	=> [Obrigatório, UF], ex: AM.
 ```
 
 METHOD:
 `DELETE`
 
 URL:
-`localhost:8000/api/empresa/<<identificador>>`
+`localhost:8000/api/empresa/__id__`
 
-Obs: Troque o `<<identificador>>` pelo id da empresa que deseja deletar. Ex: `localhost:8000/api/empresa/1`
+Obs: Troque o `__id__` pelo `_id` da empresa que deseja deletar. Ex: `localhost:8000/api/empresa/507f1f77bcf86cd799439013`
 
 Response:
 ```
-Empresa deletada com sucesso.
+{
+	"success": "Empresa deletada com sucesso."
+}
 ou
-A empresa informada não foi encontrada.
+{
+	"message": "A empresa informada não foi encontrada."
+}
 ```
-## 4 Requisições para ÁREA:
+## 4 Requisições para Área:
 
 METHOD:
 `GET`
@@ -342,13 +388,19 @@ Response:
 ```
 [
     {
-	"descricao": "área 1"
+	"descricao": "Desenvolvimento de Sistemas Web.",
+	"created_at":
+	"updated_at":
     },
     {
-	"descricao": "área 2"
+	"descricao": "Desenvolvimento de Drivers.",
+	"created_at":
+	"updated_at":
     },
     {
-	"descricao": "área 3"
+	"descricao": "Engenharia de Sistemas Distribuidos.",
+	"created_at":
+	"updated_at":
     }
 ]
 ```
@@ -362,7 +414,7 @@ URL:
 Body (JSON):
 ```
 {
-	"descricao": "Descrição da área"
+	"descricao": "..Descrição da área de conhecimento."
 }
 ```
 
@@ -370,14 +422,15 @@ METHOD:
 `PUT`
 
 URL:
-`localhost:8000/api/area/<<identificador>>`
+`localhost:8000/api/area/__id__`
 
-Obs: Troque o `<<identificador>>` pelo id da área que deseja editar. Ex: `localhost:8000/api/area/1`
+##### Obs:
+Substitua o `__id__` pelo `_id` da área que deseja editar. Ex: `localhost:8000/api/area/507f1f77bcf86cd799439014`
 
 Body (JSON):
 ```
 {
-	"descricao": "Descrição da área"
+	"descricao": "..Descrição da área de conhecimento."
 }
 ```
 
@@ -390,17 +443,22 @@ METHOD:
 `DELETE`
 
 URL:
-`localhost:8000/api/area/<<identificador>>`
+`localhost:8000/api/area/__id__`
 
-Obs: Troque o `<<identificador>>` pelo id da área que deseja deletar. Ex: `localhost:8000/api/area/1`
+##### Obs:
+Substitua o `id` pelo `_id` da área que deseja deletar. Ex: `localhost:8000/api/area/507f1f77bcf86cd799439014`
 
 Response:
 ```
-Área deletada com sucesso.
+{
+	"success": "Área deletada com sucesso."
+}
 ou
-A área informada não foi encontrada.
+{
+	"message": "A área informada não foi encontrada."
+}
 ```
-## 5 Requisições para VAGA:
+## 5 Requisições para Vaga:
 
 METHOD:
 `GET`
@@ -412,27 +470,33 @@ Response:
 ```
 [
     {
-	"funcao": "Desenvolvedor Web",
-	"salario": 1800,
-	"descricao": "Atuará no desenvolvimento de Sistemas para a Web, usando Laravel e Angular 6.",
+	"funcao": "Desenvolvedor Web JR I",
+	"salario": 1.800,
+	"descricao": "Deve possui conhecimento em Angular 6 e Laravel 5.2",
 	"empresa":
 	{
-		"cnpj": "12345678998765",
-		"nome": "Empresa Web System Manaus",
-		"telefone": "999999999",
-		"endereco":
-		{
-			"cep": "69000000",
-			"rua": "Rua Manaus R",
-			"numero": "1500",
-			"bairro": "Bairro Manaus B",
-			"cidade": "Manaus",
-			"estado": "AM"
-		}
+		"cnpj": "12345678912345",
+		"nome": "DESEN SOFT LDTA",
+		"telefone": "9333333333",
 	},
 	area:
 	{
-		"descricao": "Desenvolvimento de Sistemas"
+		"descricao": "Desenvolvimento de Sistemas Web."
+	}
+    },
+    {
+	"funcao": "Desenvolvedor de Driver Sênior",
+	"salario": 5.800,
+	"descricao": "Atuará no desenvolvimento de drivers para Windows",
+	"empresa":
+	{
+		"cnpj": "9876543219865",
+		"nome": "AMAZON WEB DEV",
+		"telefone": "966666666",
+	},
+	area:
+	{
+		"descricao": "Desenvolvimento de Drivers."
 	}
     }
 ]
@@ -447,11 +511,19 @@ URL:
 Body (JSON):
 ```
 {
-	"funcao": "Cargo referente à vaga",
-	"salario": "Remuneração",
-	"descricao": "Descrição da Vaga",
-	"empresa": "CNPJ da empresa",
-	"area": "Código da área de atuação"
+	"funcao": "..Cargo referente à vaga.",
+	"salario": "..Remuneração.",
+	"descricao": "..Descrição da Vaga.",
+	"empresa":
+	{
+		"cnpj": "..Cnpj",
+		"nome": "..Nome da Empresa",
+		"telefone": "..Telefone da Empresa",
+	},
+	area:
+	{
+		"descricao": "..Descrição da área de conhecimento."
+	}
 }
 ```
 
@@ -459,41 +531,57 @@ METHOD:
 `PUT`
 
 URL:
-`localhost:8000/api/vaga/<<identificador>>`
+`localhost:8000/api/vaga/__id__`
 
-Obs: Troque o `<<identificador>>` pelo id da vaga que deseja editar. Ex: `localhost:8000/api/vaga/1`
+##### Obs:
+Substitua o `__id__` pelo `_id` da vaga que deseja editar. Ex: `localhost:8000/api/vaga/507f1f77bcf86cd799439015`
 
 Body (JSON):
 ```
 {
-	"funcao": "Cargo referente à vaga",
-	"salario": "Remuneração",
-	"descricao": "Descrição da Vaga",
-	"empresa": "CNPJ da empresa",
-	"area": "Código da área de atuação"
+	"funcao": "..Cargo referente à vaga.",
+	"salario": "..Remuneração.",
+	"descricao": "..Descrição da Vaga.",
+	"empresa":
+	{
+		"cnpj": "..Cnpj",
+		"nome": "..Nome da Empresa",
+		"telefone": "..Telefone da Empresa",
+	},
+	area:
+	{
+		"descricao": "..Descrição da área de conhecimento."
+	}
 }
 ```
 
 Validação dos Dados (Body). Para as requisiçes `POST` e `PUT`.
 ```
-funcao 	  => [Obrigatório, Máximo 150 caracteres].
-salario   => [Obrigatório, R$].
-descricao => [Obrigatório, Máximo 150 caracteres].
-empresa   => [Obrigatório, ID da Empresa].
-area      => [Obrigatório, ID da área de atuação].
+funcao 	  	 => [Obrigatório, Máximo 150 caracteres].
+salario   	 => [Obrigatório, R$].
+descricao 	 => [Obrigatório, Máximo 150 caracteres].
+empresa.cnp	 => [Obrigatório, Somente números, 14 dígitos].
+empresa.nome 	 => [Obrigatório, Máximo 150 caracteres].
+empresa.telefone => [Obrigatório, Somente números], ex: 92999999999.
+area.descricao   => [Obrigatório, Máximo 150 caracteres].
 ```
 
 METHOD:
 `DELETE`
 
 URL:
-`localhost:8000/api/vaga/<<identificador>>`
+`localhost:8000/api/vaga/__id__`
 
-Obs: Troque o `<<identificador>>` pelo id da vaga que deseja deletar. Ex: `localhost:8000/api/vaga/1`
+##### Obs:
+Substitua o `__id__` pelo `_id` da vaga que deseja deletar. Ex: `localhost:8000/api/vaga/507f1f77bcf86cd799439015`
 
 Response:
 ```
-Vaga deletada com sucesso.
+{
+	"success": "Vaga deletada com sucesso."
+}
 ou
-A vaga informada não foi encontrada.
+{
+	"message": "A vaga informada não foi encontrada."
+}
 ```
