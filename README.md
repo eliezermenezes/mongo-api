@@ -8,6 +8,9 @@ Uma API RESTFul em PHP usando o Framework Laravel 5.2, criada por [Eliezer dos S
 1) Clone ou baixe este repositório e, estando no diretório do projeto, abra o console e digite: 
 `composer install`
 
+2) Para gerar a `APP_KEY`, estando no diretório do projeto, abra o console e digite:
+`php artisan key:generate`
+
 1) Para executar, estando no diretório do projeto, abra o console e digite: 
 `php artisan serve`
 
