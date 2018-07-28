@@ -78,17 +78,17 @@ URL:
 `localhost:8000/api/endereco/__id__`
 
 ##### Obs:
-Troque o `__id__` pelo `_id` do endereço que deseja editar. Ex: `localhost:8000/api/endereco/1`
+Troque o __id__ pelo `_id` do endereço que deseja editar. Ex: `localhost:8000/api/endereco/507f1f77bcf86cd799439011`
 
 Body (JSON):
 ```
 {
-	"cep": "CEP do Endereço",
-	"rua": "Nome da Rua",
-	"numero": "N° da residência",
-	"bairro": "Nome do bairro",
-	"cidade": "Nome da Cidade",
-	"estado": "Nome do Estado"
+	"cep": "..cep",
+	"rua": "..Nome da Rua/Avenida",
+	"numero": "..N° da residência",
+	"bairro": "..Nome do bairro",
+	"cidade": "..Nome da Cidade",
+	"estado": "..UF"
 }
 ```
 
@@ -106,9 +106,10 @@ METHOD:
 `DELETE`
 
 URL:
-`localhost:8000/api/endereco/<<identificador>>`
+`localhost:8000/api/endereco/__id__`
 
-Obs: Troque o `<<identificador>>` pelo id do endereço que deseja deletar. Ex: `localhost:8000/api/endereco/1`
+##### Obs:
+Troque o __id__ pelo id do endereço que deseja deletar. Ex: `localhost:8000/api/endereco/507f1f77bcf86cd799439011`
 
 Response:
 ```
