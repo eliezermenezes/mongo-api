@@ -19,11 +19,11 @@ Uma API RESTFul em PHP usando o Framework Laravel 5.2, criada por [Eliezer dos S
 
 ## Exemplos de Requisições:
 
-A API é composta por cinco Endpoints, a saber (endereco, usuario, empresa, area, vaga).
+A API é composta por cinco módulos, a saber (endereco, usuario, empresa, area, vaga).
 
 ---
 
-## 1 Requisições para ENDEREÇO:
+## 1 Requisições para Endereço:
 
 METHOD:
 `GET`
@@ -35,20 +35,20 @@ Response:
 ```
 [
     {
-	"cep": "cep 1",
-	"rua": "Rua 1",
-	"numero": "N° 1",
-	"bairro": "Bairro 1",
-	"cidade": "Cidade 1",
-	"estado": "Estado 1"
+	"cep": "00000000",
+	"rua": "R dos Programadores",
+	"numero": "S/N",
+	"bairro": "Centro",
+	"cidade": "Manaus",
+	"estado": "AM"
     },
     {
-	"cep": "cep N",
-	"rua": "Rua N",
-	"numero": "N° N",
-	"bairro": "Bairro N",
-	"cidade": "Cidade N",
-	"estado": "Estado N"
+	"cep": "11111111",
+	"rua": "Rua dos Frameworks",
+	"numero": "S/N",
+	"bairro": "Centro",
+	"cidade": "Manaus",
+	"estado": "AM"
     }
 ]
 ```
@@ -62,12 +62,12 @@ URL:
 Body (JSON):
 ```
 {
-	"cep": "CEP do Endereço",
-	"rua": "Nome da Rua",
-	"numero": "N° da residência",
-	"bairro": "Nome do bairro",
-	"cidade": "Nome da Cidade",
-	"estado": "Nome do Estado"
+	"cep": "..Cep",
+	"rua": "..Nome da Rua/Avenida",
+	"numero": "..N° da residência",
+	"bairro": "..Nome do bairro",
+	"cidade": "..Nome da Cidade",
+	"estado": "..UF"
 }
 ```
 
@@ -77,7 +77,8 @@ METHOD:
 URL:
 `localhost:8000/api/endereco/<<identificador>>`
 
-Obs: Troque o `<<identificador>>` pelo id do endereço que deseja editar. Ex: `localhost:8000/api/endereco/1`
+##### Obs:
+Troque o `<<identificador>>` pelo id do endereço que deseja editar. Ex: `localhost:8000/api/endereco/1`
 
 Body (JSON):
 ```
