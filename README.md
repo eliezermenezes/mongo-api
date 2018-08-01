@@ -8,7 +8,6 @@ Uma API RESTFul em PHP usando o Framework Laravel 5.2, criada por [Eliezer dos S
 1) Clone ou baixe este repositório e, estando no diretório do projeto, abra o console e digite: 
 `composer install`
 
-<<<<<<< HEAD
 2) Para criar o arquivo de configuração `.env`, renomeie o arquivo `.env.example` que está na raiz do projeto para `.env`, ou se preferir abra o console no diretório do projeto e digite:
 `cp .env.example .env`
 
@@ -19,15 +18,6 @@ Uma API RESTFul em PHP usando o Framework Laravel 5.2, criada por [Eliezer dos S
 `php artisan serve`
 
 5) Para testar as requisições, utilize o software de sua preferência ([Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop), por exemplo) e acesse:
-=======
-2) Para gerar a `APP_KEY`, estando no diretório do projeto, abra o console e digite:
-`php artisan key:generate`
-
-1) Para executar, estando no diretório do projeto, abra o console e digite: 
-`php artisan serve`
-
-3) Para testar as requisições, utilize o software de sua preferência ([Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop), por exemplo) e acesse:
->>>>>>> 89a4ad6ebb12e90e6fe3d51a50e2150f9a8267c9
 `http://localhost:8000`
 
 ## Exemplos de Requisições:
@@ -38,11 +28,8 @@ A API é composta por cinco módulos, a saber (endereco, usuario, empresa, area,
 
 ## 1 Requisições para Endereço:
 
-<<<<<<< HEAD
 #### - Listagem
 
-=======
->>>>>>> 89a4ad6ebb12e90e6fe3d51a50e2150f9a8267c9
 METHOD:
 `GET`
 
@@ -53,7 +40,6 @@ Response:
 ```
 [
     {
-<<<<<<< HEAD
         "_id": "5b5f0f84e1bee96128c515db",
         "cep": "00000000",
         "rua": "R dos Programadores",
@@ -113,33 +99,6 @@ Response:
 ```
 
 #### - Cadastro
-=======
-	"cep": "00000000",
-	"rua": "R dos Programadores",
-	"numero": "S/N",
-	"bairro": "Centro",
-	"cidade": "Manaus",
-	"estado": "AM"
-    },
-    {
-	"cep": "11111111",
-	"rua": "R dos Frameworks",
-	"numero": "S/N",
-	"bairro": "Centro",
-	"cidade": "Manaus",
-	"estado": "AM"
-    },
-    {
-	"cep": "22222222",
-	"rua": "R dos Patrões",
-	"numero": "1500",
-	"bairro": "Patrões",
-	"cidade": "Manaus",
-	"estado": "AM"
-    }
-]
-```
->>>>>>> 89a4ad6ebb12e90e6fe3d51a50e2150f9a8267c9
 
 METHOD:
 `POST`
@@ -159,15 +118,10 @@ Body (JSON):
 }
 ```
 
-<<<<<<< HEAD
 #### - Atualização
 
 METHOD:
 `PUT` (para atualização de todos os campos) e `PATCH` (para atualização de alguns campos)
-=======
-METHOD:
-`PUT`
->>>>>>> 89a4ad6ebb12e90e6fe3d51a50e2150f9a8267c9
 
 URL:
 `localhost:8000/api/endereco/__id__`
@@ -197,11 +151,8 @@ cidade	=> [Obrigatório, Máximo 150 caracteres].
 estado	=> [Obrigatório, UF], ex: AM.
 ```
 
-<<<<<<< HEAD
 #### - Remoção
 
-=======
->>>>>>> 89a4ad6ebb12e90e6fe3d51a50e2150f9a8267c9
 METHOD:
 `DELETE`
 
@@ -224,11 +175,8 @@ ou
 
 ## 2 Requisições para Usuário:
 
-<<<<<<< HEAD
 #### - Listagem
 
-=======
->>>>>>> 89a4ad6ebb12e90e6fe3d51a50e2150f9a8267c9
 METHOD:
 `GET`
 
@@ -239,7 +187,6 @@ Response:
 ```
 [
     {
-<<<<<<< HEAD
         "_id": "5b5f11efe1bee96128c515dc",
         "nome": "Fulano Desenvolvedor I",
         "telefone": "999999999",
@@ -272,40 +219,11 @@ Response:
         },
         "updated_at": "2018-07-30 13:29:40",
         "created_at": "2018-07-30 13:29:40"
-=======
-	"nome": "Fulano Desenvolvedor I",
-	"telefone": "999999999",
-	"email": "fulano_developI@xxx.com",
-	"endereco":
-	{
-		"cep": "00000000",
-		"rua": "R dos Progamadores",
-		"numero": "S/N",
-		"bairro": "Centro",
-		"cidade": "Manaus",
-		"estado": "AM"
-	}
-    },
-    {
-	"nome": "Fulano Desenvolvedor II",
-	"telefone": "988888888",
-	"email": "fulano_developII@xxx.com",
-	"endereco":
-	{
-		"cep": "11111111",
-		"rua": "R dos Frameworks",
-		"numero": "S/N",
-		"bairro": "Centro",
-		"cidade": "Manaus",
-		"estado": "AM"
-	}
->>>>>>> 89a4ad6ebb12e90e6fe3d51a50e2150f9a8267c9
     }
 ]
 ```
 
 METHOD:
-<<<<<<< HEAD
 `GET`
 
 URL:
@@ -337,8 +255,6 @@ Response:
 #### - Cadastro
 
 METHOD:
-=======
->>>>>>> 89a4ad6ebb12e90e6fe3d51a50e2150f9a8267c9
 `POST`
 
 URL:
@@ -361,15 +277,10 @@ Body (JSON):
 }
 ```
 
-<<<<<<< HEAD
 #### - Atualização
 
 METHOD:
 `PUT` (para atualização de todos os campos) e `PATCH` (para atualização de alguns campos)
-=======
-METHOD:
-`PUT`
->>>>>>> 89a4ad6ebb12e90e6fe3d51a50e2150f9a8267c9
 
 URL:
 `localhost:8000/api/usuario/__id__`
@@ -407,11 +318,8 @@ endereco.cidade	=> [Obrigatório, Máximo 150 caracteres].
 endereco.estado	=> [Obrigatório, UF], ex: AM.
 ```
 
-<<<<<<< HEAD
 #### - Remoção
 
-=======
->>>>>>> 89a4ad6ebb12e90e6fe3d51a50e2150f9a8267c9
 METHOD:
 `DELETE`
 
@@ -434,11 +342,8 @@ ou
 
 ## 3 Requisições para Empresa:
 
-<<<<<<< HEAD
 #### - Listagem
 
-=======
->>>>>>> 89a4ad6ebb12e90e6fe3d51a50e2150f9a8267c9
 METHOD:
 `GET`
 
@@ -449,7 +354,6 @@ Response:
 ```
 [
     {
-<<<<<<< HEAD
         "_id": "5b5f1373e1bee96128c515dd",
         "cnpj": "12345678912345",
         "nome": "DESEN SOFT LDTA",
@@ -482,40 +386,11 @@ Response:
         },
         "updated_at": "2018-07-30 13:34:18",
         "created_at": "2018-07-30 13:34:18"
-=======
-	"cnpj": "12345678912345",
-	"nome": "DESEN SOFT LDTA",
-	"telefone": "9333333333",
-	"endereco":
-	{
-		"cep": "22222222",
-		"rua": "R dos Patrões",
-		"numero": "1500",
-		"bairro": "Patrões",
-		"cidade": "Manaus",
-		"estado": "AM"
-	}
-    },
-    {
-	"cnpj": "9876543219865",
-	"nome": "AMAZON WEB DEV",
-	"telefone": "966666666",
-	"endereco":
-	{
-		"cep": "11111111",
-		"rua": "R dos Frameworks",
-		"numero": "S/N",
-		"bairro": "Centro",
-		"cidade": "Manaus",
-		"estado": "AM"
-	}
->>>>>>> 89a4ad6ebb12e90e6fe3d51a50e2150f9a8267c9
     }
 ]
 ```
 
 METHOD:
-<<<<<<< HEAD
 `GET`
 
 URL:
@@ -546,8 +421,6 @@ Response:
 #### - Cadastro
 
 METHOD:
-=======
->>>>>>> 89a4ad6ebb12e90e6fe3d51a50e2150f9a8267c9
 `POST`
 
 URL:
@@ -570,15 +443,10 @@ Body (JSON):
 }
 ```
 
-<<<<<<< HEAD
 #### - Atualização
 
 METHOD:
 `PUT` (para atualização de todos os campos) e `PATCH` (para atualização de alguns campos)
-=======
-METHOD:
-`PUT`
->>>>>>> 89a4ad6ebb12e90e6fe3d51a50e2150f9a8267c9
 
 URL:
 `localhost:8000/api/empresa/__id__`
@@ -615,10 +483,7 @@ endereco.bairro	=> [Obrigatório, Máximo 150 caracteres].
 endereco.cidade	=> [Obrigatório, Máximo 150 caracteres].
 endereco.estado	=> [Obrigatório, UF], ex: AM.
 ```
-<<<<<<< HEAD
 #### - Remoção
-=======
->>>>>>> 89a4ad6ebb12e90e6fe3d51a50e2150f9a8267c9
 
 METHOD:
 `DELETE`
@@ -640,11 +505,8 @@ ou
 ```
 ## 4 Requisições para Área:
 
-<<<<<<< HEAD
 #### - Listagem
 
-=======
->>>>>>> 89a4ad6ebb12e90e6fe3d51a50e2150f9a8267c9
 METHOD:
 `GET`
 
@@ -655,7 +517,6 @@ Response:
 ```
 [
     {
-<<<<<<< HEAD
         "_id": "5b5f13da153d0c052a8b4569",
         "descricao": "Desenvolvimento de Sistemas Web.",
         "updated_at": "2018-07-30 14:42:34",
@@ -695,25 +556,6 @@ Response:
 
 #### - Cadastro
     
-=======
-	"descricao": "Desenvolvimento de Sistemas Web.",
-	"created_at":
-	"updated_at":
-    },
-    {
-	"descricao": "Desenvolvimento de Drivers.",
-	"created_at":
-	"updated_at":
-    },
-    {
-	"descricao": "Engenharia de Sistemas Distribuidos.",
-	"created_at":
-	"updated_at":
-    }
-]
-```
-
->>>>>>> 89a4ad6ebb12e90e6fe3d51a50e2150f9a8267c9
 METHOD:
 `POST`
 
@@ -726,10 +568,7 @@ Body (JSON):
 	"descricao": "..Descrição da área de conhecimento."
 }
 ```
-<<<<<<< HEAD
 #### - Atualização
-=======
->>>>>>> 89a4ad6ebb12e90e6fe3d51a50e2150f9a8267c9
 
 METHOD:
 `PUT`
@@ -751,10 +590,7 @@ Validação dos Dados (Body). Para as requisiçes `POST` e `PUT`.
 ```
 descricao => [Obrigatório, Máximo 150 caracteres].
 ```
-<<<<<<< HEAD
 #### - Remoção
-=======
->>>>>>> 89a4ad6ebb12e90e6fe3d51a50e2150f9a8267c9
 
 METHOD:
 `DELETE`
@@ -777,11 +613,8 @@ ou
 ```
 ## 5 Requisições para Vaga:
 
-<<<<<<< HEAD
 #### - Listagem
 
-=======
->>>>>>> 89a4ad6ebb12e90e6fe3d51a50e2150f9a8267c9
 METHOD:
 `GET`
 
@@ -792,7 +625,6 @@ Response:
 ```
 [
     {
-<<<<<<< HEAD
         "_id": "5b5f19fce1bee96128c515df",
         "funcao": "Desenvolvedor Web JR I",
         "salario": "1.800",
@@ -858,39 +690,6 @@ Response:
 }
 ```
 #### - Cadastro
-=======
-	"funcao": "Desenvolvedor Web JR I",
-	"salario": 1.800,
-	"descricao": "Deve possui conhecimento em Angular 6 e Laravel 5.2",
-	"empresa":
-	{
-		"cnpj": "12345678912345",
-		"nome": "DESEN SOFT LDTA",
-		"telefone": "9333333333",
-	},
-	area:
-	{
-		"descricao": "Desenvolvimento de Sistemas Web."
-	}
-    },
-    {
-	"funcao": "Desenvolvedor de Driver Sênior",
-	"salario": 5.800,
-	"descricao": "Atuará no desenvolvimento de drivers para Windows",
-	"empresa":
-	{
-		"cnpj": "9876543219865",
-		"nome": "AMAZON WEB DEV",
-		"telefone": "966666666",
-	},
-	area:
-	{
-		"descricao": "Desenvolvimento de Drivers."
-	}
-    }
-]
-```
->>>>>>> 89a4ad6ebb12e90e6fe3d51a50e2150f9a8267c9
 
 METHOD:
 `POST`
@@ -916,16 +715,10 @@ Body (JSON):
 	}
 }
 ```
-<<<<<<< HEAD
 #### - Atualização
 
 METHOD:
 `PUT` (para atualização de todos os campos) e `PATCH` (para atualização de alguns campos)
-=======
-
-METHOD:
-`PUT`
->>>>>>> 89a4ad6ebb12e90e6fe3d51a50e2150f9a8267c9
 
 URL:
 `localhost:8000/api/vaga/__id__`
