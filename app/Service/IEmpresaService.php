@@ -12,5 +12,7 @@ interface IEmpresaService
 
     public function updateEmpresa($id, Request $request);
 
+    public function patchEmpresa($id, Request $request);
+
     public function deleteEmpresa($id);
 }

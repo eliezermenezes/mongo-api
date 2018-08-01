@@ -122,4 +122,80 @@ trait ValidatorTrait
             'empresa.telefone.regex' => ValidatorUtils::MSG_PHONE_FORMAT
         );
     }
+
+    public function validateAddressRequestsPatch(Request $request) {
+
+        $fielsAddress = array();
+        foreach ($request->except('_token') as $key => $field) {
+            $fielsAddress[$key] = $this->fieldsOfAddress()[$key];
+        }
+
+        $validate = $this->validation($request->all(), $fielsAddress, $this->messagesOfErrors());
+        return $this->mountErrorsRequest($validate);
+    }
+
+    public function validateUsersRequestsPatch(Request $request) {
+
+        $fielsUsers = array();
+        foreach ($request->except('_token') as $key => $field) {
+            if (is_array($field)) {
+                $fieldsArray = [];
+                foreach ($field as $k => $fld) {
+                    $fieldsArray[$k] = $fld;
+                    $fielsUsers[$key.'.'.$k] = $this->fieldsOfUser()[$key.'.'.$k];
+                }
+            } else $fielsUsers[$key] = $this->fieldsOfUser()[$key];
+        }
+
+        $validate = $this->validation($request->all(), $fielsUsers, $this->messagesOfErrors());
+        return $this->mountErrorsRequest($validate);
+    }
+
+    public function validateCompanyRequestsPatch(Request $request) {
+
+        $fielsCompany = array();
+        foreach ($request->except('_token') as $key => $field) {
+            if (is_array($field)) {
+                $fieldsArray = [];
+                foreach ($field as $k => $fld) {
+                    $fieldsArray[$k] = $fld;
+                    $fielsCompany[$key.'.'.$k] = $this->fieldsOfCompany()[$key.'.'.$k];
+                }
+            } else $fielsCompany[$key] = $this->fieldsOfCompany()[$key];
+        }
+
+        $validate = $this->validation($request->all(), $fielsCompany, $this->messagesOfErrors());
+        return $this->mountErrorsRequest($validate);
+    }
+
+    public function validateVacancyRequestsPatch(Request $request) {
+
+        $fielsVacancy = array();
+        foreach ($request->except('_token') as $key => $field) {
+            if (is_array($field)) {
+                $fieldsArray = [];
+                foreach ($field as $k => $fld) {
+                    $fieldsArray[$k] = $fld;
+                    $fielsVacancy[$key.'.'.$k] = $this->fieldsOfVacancy()[$key.'.'.$k];
+                }
+            } else $fielsVacancy[$key] = $this->fieldsOfVacancy()[$key];
+        }
+
+        $validate = $this->validation($request->all(), $fielsVacancy, $this->messagesOfErrors());
+        return $this->mountErrorsRequest($validate);
+    }
+
+    private function isUpdateAllFields(Request $request, $model) {
+
+        switch ($model) {
+            case 'endereco':
+                return count($request->all()) === ValidatorUtils::QNT_FIELDS_ADDRESS;
+            case 'usuario':
+                return count($request->all()) === ValidatorUtils::QNT_FIELDS_USERS;
+            case 'empresa':
+                return count($request->all()) === ValidatorUtils::QNT_FIELDS_COMPANY;
+            case 'vaga':
+                return count($request->all()) === ValidatorUtils::QNT_FIELDS_VACANCY;
+        }
+    }
 }

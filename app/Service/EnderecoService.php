@@ -54,6 +54,15 @@ class EnderecoService implements IEnderecoService
         return 'conflict';
     }
 
+    public function patchEndereco($id, Request $request) {
+        $endereco = $this->getEnderecoById($id);
+
+        if (is_null($endereco)) return false;
+
+        $endereco->fill($request->all())->save();
+        return $endereco;
+    }
+
     public function deleteEndereco($id)
     {
         $endereco = $this->getEnderecoById($id);

@@ -56,6 +56,10 @@ class UsuarioController extends Controller
             return ResponseUtils::msgIdentifierInvalid();
         }
 
+        if (!$this->isUpdateAllFields($request, 'usuario')) {
+            return $this->patchUsuario($request, $id);
+        }
+
         $validate = $this->validateUserRequests($request);
         if ($validate->error) {
             return response()->json($validate->message, ResponseUtils::COD_INVALID_REQUEST);
@@ -68,6 +72,24 @@ class UsuarioController extends Controller
             return ResponseUtils::msgUserConflict();
         }
         return response()->json($update, ResponseUtils::COD_OK);
+    }
+
+    public function patchUsuario(Request $request, $id) {
+        if (!$this->identifierValid($id)) {
+            return ResponseUtils::msgIdentifierInvalid();
+        }
+
+        if ($this->isUpdateAllFields($request, 'usuario')) {
+            return $this->updateUsuario($request, $id);
+        }
+
+        $validate = $this->validateUsersRequestsPatch($request);
+
+        if ($validate->error) {
+            return response()->json($validate->message, ResponseUtils::COD_INVALID_REQUEST);
+        }
+
+        return response()->json($this->userService->patchUsuario($id, $request));
     }
 
     public function deletaUsuario($id)

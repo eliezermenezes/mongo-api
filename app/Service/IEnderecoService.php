@@ -12,5 +12,7 @@ interface IEnderecoService
 
     public function updateEndereco($id, Request $request);
 
+    public function patchEndereco($id, Request $request);
+
     public function deleteEndereco($id);
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Service\IEnderecoService;
 use App\Service\Traits\ValidatorTrait;
 use App\Service\Utils\ResponseUtils;
+use App\Service\Utils\ValidatorUtils;
 use Illuminate\Http\Request;
 
 class EnderecoController extends Controller
@@ -58,6 +59,10 @@ class EnderecoController extends Controller
             return ResponseUtils::msgIdentifierInvalid();
         }
 
+        if (!$this->isUpdateAllFields($request, 'endereco')) {
+            return $this->patchEndereco($request, $id);
+        }
+
         $validate = $this->validateAddressRequests($request);
         if ($validate->error) {
             return response()->json($validate->message, ResponseUtils::COD_INVALID_REQUEST);
@@ -72,6 +77,24 @@ class EnderecoController extends Controller
         return response()->json($update, ResponseUtils::COD_OK);
     }
 
+    public function patchEndereco(Request $request, $id) {
+        if (!$this->identifierValid($id)) {
+            return ResponseUtils::msgIdentifierInvalid();
+        }
+
+        if ($this->isUpdateAllFields($request, 'endereco')) {
+            return $this->updateEndereco($request, $id);
+        }
+
+        $validate = $this->validateAddressRequestsPatch($request);
+
+        if ($validate->error) {
+            return response()->json($validate->message, ResponseUtils::COD_INVALID_REQUEST);
+        }
+
+        return response()->json($this->addressService->patchEndereco($id, $request));
+
+    }
 
     public function deletaEndereco($id)
     {

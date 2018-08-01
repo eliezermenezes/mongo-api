@@ -18,7 +18,7 @@ class AreaConhecimentoController extends Controller
     public function getAreas() {
         $areas = $this->areaService->getAreas();
 
-        if (is_null($areas)) {
+        if (is_null($areas) || count($areas) == 0) {
             return ResponseUtils::msgNoRegisterFound();
         }
         return response()->json($areas, ResponseUtils::COD_OK);
@@ -33,7 +33,7 @@ class AreaConhecimentoController extends Controller
 
         $create = $this->areaService->createArea($request);
         if (!$create) {
-            return response()->json(ResponseUtils::MSG_AREA_CONFLICT, ResponseUtils::COD_CONFLICT);
+            return ResponseUtils::msgAreaConflict();
         }
         return response()->json($create, ResponseUtils::COD_CREATED);
     }
@@ -44,7 +44,7 @@ class AreaConhecimentoController extends Controller
         }
 
         $area = $this->areaService->getAreaById($id);
-        if (is_null($area)) {
+        if (is_null($area) || count($area) == 0) {
             return ResponseUtils::msgAreaNotFound();
         }
         return response()->json($area, ResponseUtils::COD_OK);
@@ -64,10 +64,15 @@ class AreaConhecimentoController extends Controller
         $update = $this->areaService->updateArea($id, $request);
         if (!$update) {
             return ResponseUtils::msgAreaNotFound();
+        } else if ($update == 'conflict') {
+            return ResponseUtils::msgAreaConflict();
         }
         return response()->json($update);
     }
 
+    public function patchVaga(Request $request, $id) {
+        return $this->updateArea($request, $id);
+    }
 
     public function deletaArea($id)
     {
@@ -80,6 +85,6 @@ class AreaConhecimentoController extends Controller
             return ResponseUtils::msgAreaNotFound();
         }
 
-        return response()->json(ResponseUtils::MSG_AREA_DELETED, ResponseUtils::COD_OK);
+        return response()->json(['success' => ResponseUtils::MSG_AREA_DELETED], ResponseUtils::COD_OK);
     }
 }

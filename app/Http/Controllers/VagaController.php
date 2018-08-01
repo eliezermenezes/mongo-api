@@ -53,6 +53,10 @@ class VagaController extends Controller
             return ResponseUtils::msgIdentifierInvalid();
         }
 
+        if (!$this->isUpdateAllFields($request, 'vaga')) {
+            return $this->patchVaga($request, $id);
+        }
+
         $validate = $this->validateVacancyRequests($request);
         if ($validate->error) {
             return response()->json($validate->message, ResponseUtils::COD_INVALID_REQUEST);
@@ -65,6 +69,24 @@ class VagaController extends Controller
         return response()->json($update);
     }
 
+    public function patchVaga(Request $request, $id) {
+        if (!$this->identifierValid($id)) {
+            return ResponseUtils::msgIdentifierInvalid();
+        }
+
+        if ($this->isUpdateAllFields($request, 'vaga')) {
+            return $this->updateVaga($request, $id);
+        }
+
+        $validate = $this->validateVacancyRequestsPatch($request);
+
+        if ($validate->error) {
+            return response()->json($validate->message, ResponseUtils::COD_INVALID_REQUEST);
+        }
+
+        return response()->json($this->vacancyService->patchVaga($id, $request));
+
+    }
 
     public function deletaVaga($id)
     {

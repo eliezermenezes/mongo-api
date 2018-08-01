@@ -35,6 +35,15 @@ class VagaService implements IVagaService
         return $vaga;
     }
 
+    public function patchVaga($id, Request $request) {
+        $vaga = $this->getVagaById($id);
+
+        if (is_null($vaga)) return false;
+
+        $vaga->fill($request->all())->save();
+        return $vaga;
+    }
+
     public function deleteVaga($id)
     {
         $vaga = $this->getVagaById($id);

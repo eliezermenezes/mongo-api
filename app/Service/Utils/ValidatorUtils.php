@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Service\Utils;
-use App\Endereco;
 
 class ValidatorUtils
 {
@@ -26,4 +25,9 @@ class ValidatorUtils
     const MSG_PHONE_FORMAT          = "Este campo deve ser um telefone válido. Ex: 900000000";
     const MSG_CEP_FORMAT            = "Este campo deve ser em formato de CEP. Ex: 00000000";
     const MSG_CNPJ_FORMAT           = "Este campo deve ser em formato de CNPJ, com 14 dígitos. Obs: Somente números";
+
+    const QNT_FIELDS_ADDRESS = 6;
+    const QNT_FIELDS_USERS = 9;
+    const QNT_FIELDS_COMPANY = 9;
+    const QNT_FIELDS_VACANCY = 7;
  }

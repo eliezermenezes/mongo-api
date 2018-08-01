@@ -12,5 +12,7 @@ interface IUsuarioService
 
     public function updateUsuario($id, Request $request);
 
+    public function patchUsuario($id, Request $request);
+
     public function deleteUsuario($id);
 }

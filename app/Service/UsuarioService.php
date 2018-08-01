@@ -54,6 +54,15 @@ class UsuarioService implements IUsuarioService
         return 'conflict';
     }
 
+    public function patchUsuario($id, Request $request) {
+        $usuario = $this->getUsuarioById($id);
+
+        if (is_null($usuario)) return false;
+
+        $usuario->fill($request->all())->save();
+        return $usuario;
+    }
+
     public function deleteUsuario($id)
     {
         $user = $this->getUsuarioById($id);

@@ -12,5 +12,7 @@ interface IVagaService
 
     public function updateVaga($id, Request $request);
 
+    public function patchVaga($id, Request $request);
+
     public function deleteVaga($id);
 }

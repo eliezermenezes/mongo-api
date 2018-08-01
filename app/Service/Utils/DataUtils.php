@@ -2,6 +2,7 @@
 
 namespace App\Service\Utils;
 
+use App\AreaConhecimento;
 use App\Empresa;
 use App\Endereco;
 use App\Usuario;
@@ -21,5 +22,10 @@ class DataUtils
     public static function issetCompanyInBase($cnpj) {
         $company = Empresa::where('cnpj', $cnpj)->first();
         return !is_null($company);
+    }
+
+    public static function issetAreaInBase($descricao) {
+        $area = AreaConhecimento::where('descricao', $descricao)->first();
+        return !is_null($area);
     }
 }

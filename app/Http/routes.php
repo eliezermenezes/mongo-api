@@ -21,6 +21,7 @@ Route::group(['prefix' => 'api'], function ($app) {
         $usuario->get('', 'UsuarioController@getUsuarios');
         $usuario->get('/{id}', 'UsuarioController@getUsuarioById');
         $usuario->put('/{id}', 'UsuarioController@updateUsuario');
+        $usuario->patch('/{id}', 'UsuarioController@patchUsuario');
         $usuario->delete('/{id}', 'UsuarioController@deletaUsuario');
     });
 
@@ -29,6 +30,7 @@ Route::group(['prefix' => 'api'], function ($app) {
         $empresa->get('', 'EmpresaController@getEmpresas');
         $empresa->get('/{id}', 'EmpresaController@getEmpresaById');
         $empresa->put('/{id}', 'EmpresaController@updateEmpresa');
+        $empresa->patch('/{id}', 'EmpresaController@patchEmpresa');
         $empresa->delete('/{id}', 'EmpresaController@deletaEmpresa');
     });
 
@@ -37,6 +39,7 @@ Route::group(['prefix' => 'api'], function ($app) {
         $endereco->get('', 'EnderecoController@getEnderecos');
         $endereco->get('/{id}', 'EnderecoController@getEnderecoById');
         $endereco->put('/{id}', 'EnderecoController@updateEndereco');
+        $endereco->patch('/{id}', 'EnderecoController@patchEndereco');
         $endereco->delete('/{id}', 'EnderecoController@deletaEndereco');
     });
 
@@ -45,6 +48,7 @@ Route::group(['prefix' => 'api'], function ($app) {
         $area->get('', 'AreaConhecimentoController@getAreas');
         $area->get('/{id}', 'AreaConhecimentoController@getAreaById');
         $area->put('/{id}', 'AreaConhecimentoController@updateArea');
+        $area->patch('/{id}', 'AreaConhecimentoController@patchArea');
         $area->delete('/{id}', 'AreaConhecimentoController@deletaArea');
     });
 
@@ -53,6 +57,7 @@ Route::group(['prefix' => 'api'], function ($app) {
         $vaga->get('', 'VagaController@getVagas');
         $vaga->get('/{id}', 'VagaController@getVagaById');
         $vaga->put('/{id}', 'VagaController@updateVaga');
+        $vaga->patch('/{id}', 'VagaController@patchVaga');
         $vaga->delete('/{id}', 'VagaController@deletaVaga');
     });
 

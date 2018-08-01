@@ -56,6 +56,10 @@ class EmpresaController extends Controller
             return ResponseUtils::msgIdentifierInvalid();
         }
 
+        if (!$this->isUpdateAllFields($request, 'empresa')) {
+            return $this->patchEmpresa($request, $id);
+        }
+
         $validate = $this->validateCompanyRequests($request);
         if ($validate->error) {
             return response()->json($validate->message, ResponseUtils::COD_INVALID_REQUEST);
@@ -70,6 +74,23 @@ class EmpresaController extends Controller
         return response()->json($update);
     }
 
+    public function patchEmpresa(Request $request, $id) {
+        if (!$this->identifierValid($id)) {
+            return ResponseUtils::msgIdentifierInvalid();
+        }
+
+        if ($this->isUpdateAllFields($request, 'empresa')) {
+            return $this->updateEmpresa($request, $id);
+        }
+
+        $validate = $this->validateCompanyRequestsPatch($request);
+
+        if ($validate->error) {
+            return response()->json($validate->message, ResponseUtils::COD_INVALID_REQUEST);
+        }
+
+        return response()->json($this->companyService->patchEmpresa($id, $request));
+    }
 
     public function deletaEmpresa($id)
     {

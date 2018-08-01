@@ -54,6 +54,15 @@ class EmpresaService implements IEmpresaService
         return 'conflict';
     }
 
+    public function patchEmpresa($id, Request $request) {
+        $empresa = $this->getEmpresaById($id);
+
+        if (is_null($empresa)) return false;
+
+        $empresa->fill($request->all())->save();
+        return $empresa;
+    }
+
     public function deleteEmpresa($id)
     {
         $empresa = $this->getEmpresaById($id);
